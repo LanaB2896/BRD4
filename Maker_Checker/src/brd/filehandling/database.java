@@ -26,8 +26,6 @@ public class database {
 			String Authorized_By) {
 		try {
 			Statement state = connection.createStatement();
-
-
 			PreparedStatement pre = connection
 					.prepareStatement("insert into LANA_DB values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pre.setString(1, Customer_ID);

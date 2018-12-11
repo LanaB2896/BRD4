@@ -1,5 +1,5 @@
 package MakerPackage;
-import java.io.PrintWriter;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,21 +17,24 @@ public class databaseConnection {
 		return connection;
 	}
 
-	public static boolean validateLogin(String  UserName, String Password) 
+	public static boolean validateLogin(String  UserName, String Password, String authority) 
 	{
 
 		try {
 			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
-			String query =  "select * from lana_db where UserName='"+  UserName + "' and Password ='"+ Password + "'";
-			ResultSet resultSet = statement.executeQuery(query);
+			String query = 	"SELECT * FROM logindatabase where username ='"+ UserName + "' and password = '"+ Password + "' and authority = '"+ authority +"'";
+//		String query = 	"SELECT * FROM logindatabase where username = '"+UserName+"' and password = '"+Password+"' and authority = '"+authority"'";
 			
+//	String query =  "select * from logindatabase where UserName='"+  UserName + "' and Password ='"+ Password + "'" ;
+			ResultSet resultSet = statement.executeQuery(query);
+		
 			while(resultSet.next())
 			{
-				System.out.println(resultSet.getString(1));
-				System.out.println(resultSet.getString(2));
+				return true;
 			}	
 			
+			System.out.println(resultSet.toString());
 		} catch (Exception e) {
 			System.out.println("Error validating in db : " + e);
 		}

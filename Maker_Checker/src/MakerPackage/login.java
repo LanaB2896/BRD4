@@ -1,7 +1,6 @@
 package MakerPackage;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,19 +17,38 @@ public class login extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String UserNameValue= request.getParameter("user");
 	String PasswordValue= request.getParameter("password");
-//System.out.println(UserNameValue + PasswordValue);
-	databaseConnection.validateLogin(UserNameValue, PasswordValue);
+	String authorityValue = request.getParameter("authority");
+System.out.println(UserNameValue + PasswordValue + authorityValue);
+//response.sendRedirect("makerPage.html");
+//System.out.println("hai");
+//	databaseConnection.validateLogin(UserNameValue, PasswordValue);
 //	if(databaseConnection.validateLogin(UserNameValue, PasswordValue)== true)
 //	{
-//		response.sendRedirect("hello.jsp");
+//
+//response.sendRedirect("makerPage.html");
+//System.out.println("hai");
 //	}
-//	else
+//	else if(databaseConnection.validateLogin(UserNameValue, PasswordValue) ==false)
 //	{
-//		response.sendRedirect("bye.jsp");
+//	
+//
+//		response.sendRedirect("login.html");
+//		System.out.println("bye");
 //	}
-		PrintWriter out = response.getWriter();
-		out.println("welcome");
-		response.sendRedirect("makerPage.html");  
+	
+	
+	databaseConnection.validateLogin(UserNameValue, PasswordValue,authorityValue);
+	if(databaseConnection.validateLogin(UserNameValue, PasswordValue,authorityValue)== true)
+	{
+response.sendRedirect("makerPage.html");
+System.out.println("hai");
 	}
+	else if(databaseConnection.validateLogin(UserNameValue, PasswordValue,authorityValue) ==false)
+	{
+		response.sendRedirect("login.html");
+		System.out.println("bye");
+	}
+	
 
+	}
 }

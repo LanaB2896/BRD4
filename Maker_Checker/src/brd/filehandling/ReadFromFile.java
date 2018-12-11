@@ -40,18 +40,18 @@ public class ReadFromFile {
 //					System.out.println(DataBaseConnection[5]);
 				}
 				Boolean b = validator(DataBaseConnection);
-				System.out.println(b);
-//				if (validator(DataBaseConnection) == true) {
-//					
-//					database.getConnection(Integer.toString(count += 1), DataBaseConnection[0], DataBaseConnection[1],
-//							DataBaseConnection[2], DataBaseConnection[3], DataBaseConnection[4], DataBaseConnection[5],
-//							DataBaseConnection[6], DataBaseConnection[7], DataBaseConnection[8], DataBaseConnection[9],
-//							DataBaseConnection[10], DataBaseConnection[11], DataBaseConnection[12],
-//							DataBaseConnection[13], DataBaseConnection[14], DataBaseConnection[15]);
-//				}
-//				else {
-//					System.out.println("Valiation error");
-//				}
+//				System.out.println(b);
+				if (validator(DataBaseConnection) == true) {
+					
+					database.getConnection(Integer.toString(count += 1), DataBaseConnection[0], DataBaseConnection[1],
+							DataBaseConnection[2], DataBaseConnection[3], DataBaseConnection[4], DataBaseConnection[5],
+							DataBaseConnection[6], DataBaseConnection[7], DataBaseConnection[8], DataBaseConnection[9],
+							DataBaseConnection[10], DataBaseConnection[11], DataBaseConnection[12],
+							DataBaseConnection[13], DataBaseConnection[14], DataBaseConnection[15]);
+				}
+				else {
+					System.out.println("Valiation error");
+				}
 			}
 		} else {
 			System.err.println("The file is in the worng format");
